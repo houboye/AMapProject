@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AppTrackingTransparency
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -16,9 +17,43 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        userTraceRequest()
+        
+        window = UIWindow(windowScene: windowScene)
+        let viewController = RootViewController()
+        let navigationController = UINavigationController(rootViewController: viewController)
+        
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+        
     }
 
+    private func userTraceRequest() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            if #available(iOS 14, *) {
+                ATTrackingManager.requestTrackingAuthorization { (status) in
+                    switch status {
+                    case .authorized:
+                        debugPrint("authorized")
+                        break
+                    case .denied:
+                        debugPrint("denied")
+                        break
+                    case .notDetermined:
+                        debugPrint("notDetermined")
+                        break
+                    case .restricted:
+                        debugPrint("restricted")
+                    break
+                    @unknown default:
+                        break
+                    }
+                }
+            }
+        }
+    }
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
