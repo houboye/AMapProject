@@ -1,0 +1,14 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '11.0'
+
+inhibit_all_warnings!
+
+target 'AMapProject' do
+    use_frameworks!
+
+    pod 'AMap3DMap' #3D地图SDK 
+    # pod 'AMap2DMap' #2D地图SDK (2D和3D不能同时使用) 
+    pod 'AMapSearch'
+    pod 'SnapKit', '~> 5.0.0'
+
+end

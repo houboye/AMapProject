@@ -1,0 +1,29 @@
+PODS:
+  - AMap3DMap (8.1.0):
+    - AMapFoundation (~> 1.6.9)
+  - AMapFoundation (1.6.9)
+  - AMapSearch (8.1.0):
+    - AMapFoundation (~> 1.6.9)
+  - SnapKit (5.0.1)
+
+DEPENDENCIES:
+  - AMap3DMap
+  - AMapSearch
+  - SnapKit (~> 5.0.0)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AMap3DMap
+    - AMapFoundation
+    - AMapSearch
+    - SnapKit
+
+SPEC CHECKSUMS:
+  AMap3DMap: 135eaaf64a29aeb2f0bca07670db26fbf3271245
+  AMapFoundation: 8d8ecbb0b2e9ce5487995360d26c885d94642bfd
+  AMapSearch: 5c1cc07429f04b9cc76438fcb2411c66fdbbb178
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+
+PODFILE CHECKSUM: c318bbf8725a247a9934086c4c280055aea87929
+
+COCOAPODS: 1.11.2
